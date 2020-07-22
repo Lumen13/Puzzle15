@@ -1,6 +1,20 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+#_hour, #_mins, #_secs {
+    display: inline-block;
+    border-left: 1px solid #123;
+    padding: 1px 5px;
+}
+
+._hidedInput {
+    display: none;
+}
+
+._unhidedInput {
+    display: normal;
+}
+
 ._container {
     width: 150px;
     height: 450px;

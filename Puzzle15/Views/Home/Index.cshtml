@@ -1,33 +1,65 @@
-﻿@model Puzzle15.Data.Img[]
+﻿@model Puzzle15.Data.ViewModel
 
-<div class="_font">
-    <h1>ПЯТНАШКИ</h1>
-</div>
-<hr /><hr /><hr />
-<div class="row _bg-Png">
-    <div id="0" class="container _container-theLeftest">
-        <img id="img_(0)" class="_img" src=@Model[0].ImgSrc onclick="work(0)">
-        <img id="img_(4)" class="_img" src=@Model[4].ImgSrc onclick="work(4)">
-        <img id="img_(8)" class="_img" src=@Model[8].ImgSrc onclick="work(8)">
-        <img id="img_(12)" class="_img" src=@Model[12].ImgSrc onclick="work(12)">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col" style="color: bisque">
+            <h1>ПЯТНАШКИ</h1>
+        </div>
     </div>
-    <div id="1" class="container _container">
-        <img id="img_(1)" class="_img" src=@Model[1].ImgSrc onclick="work(1)">
-        <img id="img_(5)" class="_img" src=@Model[5].ImgSrc onclick="work(5)">
-        <img id="img_(9)" class="_img" src=@Model[9].ImgSrc onclick="work(9)">
-        <img id="img_(13)" class="_img" src=@Model[13].ImgSrc onclick="work(13)">
+    <hr />
+    <hr />
+    <hr />
+    <div id="field" class="_unhidedInput row _bg-Png">
+        <div id="0" class="container _container-theLeftest">
+            <img id="img_(0)" class="_img" src=@Model.DisplayInfo[0].ImgSrc onclick="work(0)">
+            <img id="img_(4)" class="_img" src=@Model.DisplayInfo[4].ImgSrc onclick="work(4)">
+            <img id="img_(8)" class="_img" src=@Model.DisplayInfo[8].ImgSrc onclick="work(8)">
+            <img id="img_(12)" class="_img" src=@Model.DisplayInfo[12].ImgSrc onclick="work(12)">
+        </div>
+        <div id="1" class="container _container">
+            <img id="img_(1)" class="_img" src=@Model.DisplayInfo[1].ImgSrc onclick="work(1)">
+            <img id="img_(5)" class="_img" src=@Model.DisplayInfo[5].ImgSrc onclick="work(5)">
+            <img id="img_(9)" class="_img" src=@Model.DisplayInfo[9].ImgSrc onclick="work(9)">
+            <img id="img_(13)" class="_img" src=@Model.DisplayInfo[13].ImgSrc onclick="work(13)">
+        </div>
+        <div id="2" class="container _container">
+            <img id="img_(2)" class="_img" src=@Model.DisplayInfo[2].ImgSrc onclick="work(2)">
+            <img id="img_(6)" class="_img" src=@Model.DisplayInfo[6].ImgSrc onclick="work(6)">
+            <img id="img_(10)" class="_img" src=@Model.DisplayInfo[10].ImgSrc onclick="work(10)">
+            <img id="img_(14)" class="_img" src=@Model.DisplayInfo[14].ImgSrc onclick="work(14)">
+        </div>
+        <div id="3" class="container _container-theRightest">
+            <img id="img_(3)" class="_img" src=@Model.DisplayInfo[3].ImgSrc onclick="work(3)">
+            <img id="img_(7)" class="_img" src=@Model.DisplayInfo[7].ImgSrc onclick="work(7)">
+            <img id="img_(11)" class="_img" src=@Model.DisplayInfo[11].ImgSrc onclick="work(11)">
+            <img id="img_(15)" class="_img" src=@Model.DisplayInfo[15].ImgSrc onclick="work(15)">
+        </div>
     </div>
-    <div id="2" class="container _container">
-        <img id="img_(2)" class="_img" src=@Model[2].ImgSrc onclick="work(2)">
-        <img id="img_(6)" class="_img" src=@Model[6].ImgSrc onclick="work(6)">
-        <img id="img_(10)" class="_img" src=@Model[10].ImgSrc onclick="work(10)">
-        <img id="img_(14)" class="_img" src=@Model[14].ImgSrc onclick="work(14)">
+    <div id="hidedInput" class="_hidedInput">
+        <form method="post" style="color: antiquewhite">
+            <p><h1>Поздравляем Вас от всей души!!!</h1></p>
+            <p><h3>Вы победили в этой непростой игре!</h3></p>
+            <label for="inputName">Введите Ваше имя:</label>
+            <input asp-for="Score.Name" id="inputName" type="text" />
+            <input asp-for="Score.NumberOfMoves" id="inputMoves" type="hidden" value="" />
+            <input asp-for="Score.TimePassed" id="inputTime" type="hidden" value="" />
+            <p><h5>И если Вы получили хоть толику удовольствия, то это значит, что эта горстка песка, утекшая из часов под названием "Жизнь", прошла, воистину, не зря</h5></p>
+            <input type="submit" class="btn btn-success" />
+        </form>
     </div>
-    <div id="3" class="container _container-theRightest">
-        <img id="img_(3)" class="_img" src=@Model[3].ImgSrc onclick="work(3)">
-        <img id="img_(7)" class="_img" src=@Model[7].ImgSrc onclick="work(7)">
-        <img id="img_(11)" class="_img" src=@Model[11].ImgSrc onclick="work(11)">
-        <img id="img_(15)" class="_img" src=@Model[15].ImgSrc onclick="work(15)">
+    <br />
+    <br />
+    <br />
+    <div class="row _unhidedInput" style="color: antiquewhite; font-size: larger">
+        <div class="col-3">
+            <label>Прошло времени:</label>
+            <br />
+            <div id="_hour"></div><div id="_mins"></div><div id="_secs"></div>
+        </div>
+        <div id="separator" class="col-2"></div>
+        <div class="col-3">
+            <label>Количество движений:</label>
+            <br />
+            <div id="_counter"></div>
+        </div>
     </div>
-</div>
-<div></div>

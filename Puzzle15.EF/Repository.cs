@@ -1,5 +1,4 @@
 ﻿using Puzzle15.Data;
-using System.Collections.Generic;
 
 namespace Puzzle15.EF
 {

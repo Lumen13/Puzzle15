@@ -17,8 +17,9 @@ namespace Puzzle15.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            Img[] puzzle = _repository.DrawTable(); 
-            return View(puzzle);
+            ViewModel viewModel = new ViewModel();
+            viewModel.DisplayInfo = _repository.DrawTable(); 
+            return View(viewModel);
         }
 
         [HttpPost]
