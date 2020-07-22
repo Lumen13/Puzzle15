@@ -1,0 +1,33 @@
+﻿@model Puzzle15.Data.Img[]
+
+<div class="_font">
+    <h1>ПЯТНАШКИ</h1>
+</div>
+<hr /><hr /><hr />
+<div class="row _bg-Png">
+    <div id="0" class="container _container-theLeftest">
+        <img id="img_(0)" class="_img" src=@Model[0].ImgSrc onclick="work(0)">
+        <img id="img_(4)" class="_img" src=@Model[4].ImgSrc onclick="work(4)">
+        <img id="img_(8)" class="_img" src=@Model[8].ImgSrc onclick="work(8)">
+        <img id="img_(12)" class="_img" src=@Model[12].ImgSrc onclick="work(12)">
+    </div>
+    <div id="1" class="container _container">
+        <img id="img_(1)" class="_img" src=@Model[1].ImgSrc onclick="work(1)">
+        <img id="img_(5)" class="_img" src=@Model[5].ImgSrc onclick="work(5)">
+        <img id="img_(9)" class="_img" src=@Model[9].ImgSrc onclick="work(9)">
+        <img id="img_(13)" class="_img" src=@Model[13].ImgSrc onclick="work(13)">
+    </div>
+    <div id="2" class="container _container">
+        <img id="img_(2)" class="_img" src=@Model[2].ImgSrc onclick="work(2)">
+        <img id="img_(6)" class="_img" src=@Model[6].ImgSrc onclick="work(6)">
+        <img id="img_(10)" class="_img" src=@Model[10].ImgSrc onclick="work(10)">
+        <img id="img_(14)" class="_img" src=@Model[14].ImgSrc onclick="work(14)">
+    </div>
+    <div id="3" class="container _container-theRightest">
+        <img id="img_(3)" class="_img" src=@Model[3].ImgSrc onclick="work(3)">
+        <img id="img_(7)" class="_img" src=@Model[7].ImgSrc onclick="work(7)">
+        <img id="img_(11)" class="_img" src=@Model[11].ImgSrc onclick="work(11)">
+        <img id="img_(15)" class="_img" src=@Model[15].ImgSrc onclick="work(15)">
+    </div>
+</div>
+<div></div>
