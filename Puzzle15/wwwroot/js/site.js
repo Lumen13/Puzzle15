@@ -1,9 +1,15 @@
-﻿let counter = 0;
+﻿(mix());                                                            // comment this string to test the app
 
-function clock() {
-    const hour = document.getElementById('_hour');
-    const mins = document.getElementById('_mins');
-    const secs = document.getElementById('_secs');
+let counter = 0;
+const col0 = document.getElementById('0');
+const col1 = document.getElementById('1');
+const col2 = document.getElementById('2');
+const col3 = document.getElementById('3');
+const hours = document.getElementById('_hour');
+const mins = document.getElementById('_mins');
+const secs = document.getElementById('_secs');
+
+function clock() {    
     let S = '00', M = '00', H = '00';
 
     setInterval(function () {
@@ -21,7 +27,7 @@ function clock() {
         }
         secs.innerText = S;
         mins.innerText = M;
-        hour.innerText = H;
+        hours.innerText = H;
     }, 1000);
 }
 
@@ -34,8 +40,36 @@ function findDivOrderIndex(id, div) {
     return indexNum;
 }
 
+function randomInt(min, max) {
+    let random = min + Math.random() * (max + 1 - min);
+    return Math.floor(random);
+}
+
+function mix() {
+    let col0El = col0.children[randomInt(0, 3)];
+    let col1El = col1.children[randomInt(0, 3)];
+    let col2El = col2.children[randomInt(0, 3)];
+    let col3El = col3.children[randomInt(0, 3)];
+    let mixes = 0;
+
+    while (mixes < 10) {
+        col0.insertBefore(col1El, col0.children[randomInt(0, 3)]);
+        col1.insertBefore(col0El, col1.children[randomInt(0, 3)]);
+        col1.insertBefore(col2El, col1.children[randomInt(0, 3)]);
+        col2.insertBefore(col2El, col2.children[randomInt(0, 3)]);
+        col2.insertBefore(col3El, col2.children[randomInt(0, 3)]);
+        col3.insertBefore(col2El, col3.children[randomInt(0, 3)]);
+        col3.insertBefore(col0El, col3.children[randomInt(0, 3)]);
+        col1.insertBefore(col2El, col1.children[randomInt(0, 3)]);
+        mixes++
+    }
+}
+
 function move(id) {
     counter++;
+    const counterEl = document.getElementById('_counter')
+    counterEl.innerText = counter;
+
     let currImg = document.querySelector(`#img_\\(${id}\\)`);
     let zeroImg = document.querySelector("#img_\\(0\\)");
     let currDivParent = currImg.parentNode;
@@ -59,39 +93,39 @@ function move(id) {
         clock();
     }
 
-    if ((document.getElementById('0').children[0].id === `img_(${0})`
-        && document.getElementById('0').children[1].id === `img_(${4})`
-        && document.getElementById('0').children[2].id === `img_(${8})`
-        && document.getElementById('0').children[3].id === `img_(${12})`
-        && document.getElementById('1').children[0].id === `img_(${1})`
-        && document.getElementById('1').children[1].id === `img_(${5})`
-        && document.getElementById('1').children[2].id === `img_(${9})`
-        && document.getElementById('1').children[3].id === `img_(${13})`
-        && document.getElementById('2').children[0].id === `img_(${2})`
-        && document.getElementById('2').children[1].id === `img_(${6})`
-        && document.getElementById('2').children[2].id === `img_(${10})`
-        && document.getElementById('2').children[3].id === `img_(${14})`
-        && document.getElementById('3').children[0].id === `img_(${3})`
-        && document.getElementById('3').children[1].id === `img_(${7})`
-        && document.getElementById('3').children[2].id === `img_(${11})`
-        && document.getElementById('3').children[3].id === `img_(${15})`)
+    if ((col0.children[0].id === `img_(${0})`
+        && col0.children[1].id === `img_(${4})`
+        && col0.children[2].id === `img_(${8})`
+        && col0.children[3].id === `img_(${12})`
+        && col1.children[0].id === `img_(${1})`
+        && col1.children[1].id === `img_(${5})`
+        && col1.children[2].id === `img_(${9})`
+        && col1.children[3].id === `img_(${13})`
+        && col2.children[0].id === `img_(${2})`
+        && col2.children[1].id === `img_(${6})`
+        && col2.children[2].id === `img_(${10})`
+        && col2.children[3].id === `img_(${14})`
+        && col3.children[0].id === `img_(${3})`
+        && col3.children[1].id === `img_(${7})`
+        && col3.children[2].id === `img_(${11})`
+        && col3.children[3].id === `img_(${15})`)
         ||
-        (document.getElementById('0').children[0].id === `img_(${1})`
-            && document.getElementById('0').children[1].id === `img_(${5})`
-            && document.getElementById('0').children[2].id === `img_(${9})`
-            && document.getElementById('0').children[3].id === `img_(${13})`
-            && document.getElementById('1').children[0].id === `img_(${2})`
-            && document.getElementById('1').children[1].id === `img_(${6})`
-            && document.getElementById('1').children[2].id === `img_(${10})`
-            && document.getElementById('1').children[3].id === `img_(${14})`
-            && document.getElementById('2').children[0].id === `img_(${3})`
-            && document.getElementById('2').children[1].id === `img_(${7})`
-            && document.getElementById('2').children[2].id === `img_(${11})`
-            && document.getElementById('2').children[3].id === `img_(${15})`
-            && document.getElementById('3').children[0].id === `img_(${4})`
-            && document.getElementById('3').children[1].id === `img_(${8})`
-            && document.getElementById('3').children[2].id === `img_(${12})`
-            && document.getElementById('3').children[3].id === `img_(${0})`)) {
+        (col0.children[0].id === `img_(${1})`
+            && col0.children[1].id === `img_(${5})`
+            && col0.children[2].id === `img_(${9})`
+            && col0.children[3].id === `img_(${13})`
+            && col1.children[0].id === `img_(${2})`
+            && col1.children[1].id === `img_(${6})`
+            && col1.children[2].id === `img_(${10})`
+            && col1.children[3].id === `img_(${14})`
+            && col2.children[0].id === `img_(${3})`
+            && col2.children[1].id === `img_(${7})`
+            && col2.children[2].id === `img_(${11})`
+            && col2.children[3].id === `img_(${15})`
+            && col3.children[0].id === `img_(${4})`
+            && col3.children[1].id === `img_(${8})`
+            && col3.children[2].id === `img_(${12})`
+            && col3.children[3].id === `img_(${0})`)) {
         win();
     }
 }
@@ -103,15 +137,12 @@ function work(id) {
 function win() {
     $("._hidedInput").slideToggle("slow");
     $("._unhidedInput").slideToggle("slow");
-    const hour = document.getElementById('_hour').innerText;
-    const mins = document.getElementById('_mins').innerText;
-    const secs = document.getElementById('_secs').innerText;
     (function resultMoves() {
         const resultCount = counter;
         $('#inputMoves').val(resultCount);
     }());
     (function resultTime() {
-        const resultTime = `${hour}:${mins}:${secs}`;
+        const resultTime = `${hours.innerText}:${mins.innerText}:${secs.innerText}`;
         $('#inputTime').val(resultTime);
     }());
 }

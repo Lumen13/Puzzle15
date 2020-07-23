@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Puzzle15.Data
+﻿namespace Puzzle15.Data
 {
     public class Score
     {

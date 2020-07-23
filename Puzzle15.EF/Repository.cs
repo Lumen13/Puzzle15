@@ -30,9 +30,17 @@ namespace Puzzle15.EF
             return puzzle;
         }
 
-        public void PushScore(ViewModel viewModel)
+        public void PushScore(ViewModel _viewModel)
         {
+            Score score = new Score()
+            {
+                Name = _viewModel.Score.Name,
+                NumberOfMoves = _viewModel.Score.NumberOfMoves,
+                TimePassed = _viewModel.Score.TimePassed
+            };
 
+            db.Scores.Add(score);
+            db.SaveChanges();
         }
     }
 }
