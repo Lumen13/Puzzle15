@@ -1,6 +1,58 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+._crossZeroContainerLeft {
+    width: 155px;
+    height: 115px;
+    padding-left: 20px;
+}
+
+._crossZeroContainer {
+    width: 138px;
+    height: 110px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+._crossZeroContainerRight {
+    width: 155px;
+    height: 115px;
+    padding-right: 20px;
+}
+
+._crossZeroContainerLeftCenter {
+    width: 155px;
+    height: 135px;
+    padding-left: 20px;
+}
+
+._crossZeroContainerCenter {
+    width: 138px;
+    height: 135px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+._crossZeroContainerRightCenter {
+    width: 155px;
+    height: 135px;
+    padding-right: 20px;
+}
+
+._crossZeroDiv {
+    padding: 0px;
+    margin-top: 95px;
+    margin-bottom: 65px;
+    margin-left: 215px;
+    margin-right: 0px;
+}
+
+._crossZeroFieldBckgrnd {
+    background-image: url('/img/crossZeroField.png');
+}
+
+/*------------------------*/
+
 #_hour, #_mins, #_secs {
     display: inline-block;
     border-left: 1px solid #123;
@@ -61,8 +113,7 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 ._bg-Png {
-    background-image: url('/img/background.png');
-    
+    background-image: url('/img/background.png');    
 }
 
 a.navbar-brand {

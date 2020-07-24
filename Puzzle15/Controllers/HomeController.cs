@@ -29,6 +29,18 @@ namespace Puzzle15.Controllers
             return new LocalRedirectResult($"~/Home/Index/");
         }
 
+        [HttpGet, Route("CrossZero")]
+        public IActionResult CrossZero()
+        {
+            return View();
+        }
+
+        [HttpPost, Route("CrossZero")]
+        public IActionResult CrossZero(string nothing)
+        {
+            return new LocalRedirectResult($"~/Home/CrossZero/");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

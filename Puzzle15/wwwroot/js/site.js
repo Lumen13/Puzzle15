@@ -1,4 +1,6 @@
-﻿let counter = 0;
+﻿///////////////////////////////////////////////////////////////////// PUZZLE 15
+
+let counter = 0;
 const col0 = document.getElementById('0');
 const col1 = document.getElementById('1');
 const col2 = document.getElementById('2');
@@ -7,7 +9,7 @@ const hours = document.getElementById('_hour');
 const mins = document.getElementById('_mins');
 const secs = document.getElementById('_secs');
 
-(mix());                                                            // comment this string to test the app
+(mix());                                                            // comment this string to win
 
 function clock() {    
     let S = '00', M = '00', H = '00';
@@ -146,3 +148,8 @@ function win() {
         $('#inputTime').val(resultTime);
     }());
 }
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////// CROSS-ZERO
+
