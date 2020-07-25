@@ -1,5 +1,121 @@
-﻿///////////////////////////////////////////////////////////////////// PUZZLE 15
+﻿//////////////////////////////////////////////////////////////////////////// CROSS-ZERO
 
+const startCrossZero = document.querySelector("#startCrossZero");
+const crossFullPath = 'https://localhost:44388/img/cross.png';
+const zeroFullPath = 'https://localhost:44388/img/zero.png';
+
+function checkWin() {
+    const cell00child = document.querySelector("#crossZeroRow0Col0").children[0];
+    const cell01child = document.querySelector("#crossZeroRow0Col1").children[0];
+    const cell02child = document.querySelector("#crossZeroRow0Col2").children[0];
+    const cell10child = document.querySelector("#crossZeroRow1Col0").children[0];
+    const cell11child = document.querySelector("#crossZeroRow1Col1").children[0];
+    const cell12child = document.querySelector("#crossZeroRow1Col2").children[0];
+    const cell20child = document.querySelector("#crossZeroRow2Col0").children[0];
+    const cell21child = document.querySelector("#crossZeroRow2Col1").children[0];
+    const cell22child = document.querySelector("#crossZeroRow2Col2").children[0];
+
+    if (((cell00child !== undefined                        // if cells is not empty
+        && cell01child !== undefined
+        && cell02child !== undefined)
+        &&
+        (cell00child.src === crossFullPath                 // and if we have 3 cross in a row
+            && cell01child.src === crossFullPath
+            && cell02child.src === crossFullPath))
+        ||
+        ((cell10child !== undefined
+            && cell11child !== undefined
+            && cell12child !== undefined)
+            &&
+            (cell10child.src === crossFullPath
+                && cell11child.src === crossFullPath
+                && cell12child.src === crossFullPath))
+        ||
+        ((cell20child !== undefined
+            && cell21child !== undefined
+            && cell22child !== undefined)
+            &&
+            (cell20child.src === crossFullPath
+                && cell21child.src === crossFullPath
+                && cell22child.src === crossFullPath))
+        ||
+        ((cell00child !== undefined
+            && cell10child !== undefined
+            && cell20child !== undefined)
+            &&
+            (cell00child.src === crossFullPath
+                && cell10child.src === crossFullPath
+                && cell20child.src === crossFullPath))
+        ||
+        ((cell01child !== undefined
+            && cell11child !== undefined
+            && cell21child !== undefined)
+            &&
+            (cell01child.src === crossFullPath
+                && cell11child.src === crossFullPath
+                && cell21child.src === crossFullPath))
+        ||
+        ((cell02child !== undefined
+            && cell12child !== undefined
+            && cell22child !== undefined)
+            &&
+            (cell02child.src === crossFullPath
+                && cell12child.src === crossFullPath
+                && cell22child.src === crossFullPath))
+        ||
+        ((cell00child !== undefined
+            && cell11child !== undefined
+            && cell22child !== undefined)
+            &&
+            (cell00child.src === crossFullPath
+                && cell11child.src === crossFullPath
+                && cell22child.src === crossFullPath))
+        ||
+        ((cell02child !== undefined
+            && cell11child !== undefined
+            && cell20child !== undefined)
+            &&
+            (cell02child.src === crossFullPath
+                && cell11child.src === crossFullPath
+                && cell20child.src === crossFullPath))) {
+        console.log('boom')                                     // we shell generate 'win'
+    }
+}
+
+function draw(cursor) {
+    const cross = new Image(125, 125);
+    cross.src = '/img/cross.png';
+    const zero = new Image(125, 125);
+    zero.src = '/img/zero.png';
+
+    console.log(cross);
+    const cursorInputEl = document.getElementById(cursor);
+    var randomAnswerEl = document.getElementById(`crossZeroRow${randomInt(0, 2)}Col${randomInt(0, 2)}`);
+
+    while ((randomAnswerEl === cursorInputEl         // avoid entering cross and zero into a single cell 
+        || randomAnswerEl.children.length !== 0)     // avoid entering into already filled cell
+        && counter !== 4) {                          // avoid recursion on the last move                                                                    
+        var randomAnswerEl = document.getElementById(`crossZeroRow${randomInt(0, 2)}Col${randomInt(0, 2)}`);
+    }
+
+    cursorInputEl.appendChild(cross);
+    checkWin();
+    if (counter !== 4) {                             // avoid entering 10th element into the 9-cell field
+        randomAnswerEl.appendChild(zero);
+        checkWin();
+    }
+    counter++;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////// PUZZLE 15
+
+const puzzleStartDiv = document.querySelector("#startPuzzle15");
 let counter = 0;
 const col0 = document.getElementById('0');
 const col1 = document.getElementById('1');
@@ -9,9 +125,11 @@ const hours = document.getElementById('_hour');
 const mins = document.getElementById('_mins');
 const secs = document.getElementById('_secs');
 
-(mix());                                                            // comment this string to win
+if (puzzleStartDiv !== null) {
+    (mix());         // comment this string to win
+}
 
-function clock() {    
+function clock() {
     let S = '00', M = '00', H = '00';
 
     setInterval(function () {
@@ -150,6 +268,3 @@ function win() {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////// CROSS-ZERO
-
