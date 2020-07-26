@@ -3,8 +3,59 @@
 const startCrossZero = document.querySelector("#startCrossZero");
 const crossFullPath = 'https://localhost:44388/img/cross.png';
 const zeroFullPath = 'https://localhost:44388/img/zero.png';
+const redLineHorizontalSrc = 'https://localhost:44388/img/redLineHorizontal.png';
+const redLineVerticalSrc = 'https://localhost:44388/img/redLineVertical.png';
+const redLineDiagonalSrc = 'https://localhost:44388/img/redLineDiagonal.png';
 
-function checkWin() {
+function checkWin(isWin) {
+    const redLineHorizontal0 = new Image();
+    redLineHorizontal0.width = 140;
+    redLineHorizontal0.height = 140;
+    redLineHorizontal0.style.position = "absolute";
+    redLineHorizontal0.src = redLineHorizontalSrc;
+    const redLineHorizontal1 = new Image();
+    redLineHorizontal1.width = 140;
+    redLineHorizontal1.height = 140;
+    redLineHorizontal1.style.position = "absolute";
+    redLineHorizontal1.src = redLineHorizontalSrc;
+    const redLineHorizontal2 = new Image();
+    redLineHorizontal2.width = 140;
+    redLineHorizontal2.height = 140;
+    redLineHorizontal2.style.position = "absolute";
+    redLineHorizontal2.src = redLineHorizontalSrc;
+
+    const redLineVertical0 = new Image();
+    redLineVertical0.width = 140;
+    redLineVertical0.height = 140;
+    redLineVertical0.style.position = "absolute";
+    redLineVertical0.src = redLineVerticalSrc;
+    const redLineVertical1 = new Image();
+    redLineVertical1.width = 140;
+    redLineVertical1.height = 140;
+    redLineVertical1.style.position = "absolute";
+    redLineVertical1.src = redLineVerticalSrc;
+    const redLineVertical2 = new Image();
+    redLineVertical2.width = 140;
+    redLineVertical2.height = 140;
+    redLineVertical2.style.position = "absolute";
+    redLineVertical2.src = redLineVerticalSrc;
+
+    const redLineDiagonal0 = new Image();
+    redLineDiagonal0.width = 140;
+    redLineDiagonal0.height = 140;
+    redLineDiagonal0.style.position = "absolute";
+    redLineDiagonal0.src = redLineDiagonalSrc;
+    const redLineDiagonal1 = new Image();
+    redLineDiagonal1.width = 140;
+    redLineDiagonal1.height = 140;
+    redLineDiagonal1.style.position = "absolute";
+    redLineDiagonal1.src = redLineDiagonalSrc;
+    const redLineDiagonal2 = new Image();
+    redLineDiagonal2.width = 140;
+    redLineDiagonal2.height = 140;
+    redLineDiagonal2.style.position = "absolute";
+    redLineDiagonal2.src = redLineDiagonalSrc;
+
     const cell00child = document.querySelector("#crossZeroRow0Col0").children[0];
     const cell01child = document.querySelector("#crossZeroRow0Col1").children[0];
     const cell02child = document.querySelector("#crossZeroRow0Col2").children[0];
@@ -15,74 +66,134 @@ function checkWin() {
     const cell21child = document.querySelector("#crossZeroRow2Col1").children[0];
     const cell22child = document.querySelector("#crossZeroRow2Col2").children[0];
 
-    if (((cell00child !== undefined                        // if cells is not empty
+    if (cell00child !== undefined                            // if cells is not empty
         && cell01child !== undefined
-        && cell02child !== undefined)
-        &&
-        (cell00child.src === crossFullPath                 // and if we have 3 cross in a row
-            && cell01child.src === crossFullPath
-            && cell02child.src === crossFullPath))
-        ||
-        ((cell10child !== undefined
-            && cell11child !== undefined
-            && cell12child !== undefined)
-            &&
-            (cell10child.src === crossFullPath
-                && cell11child.src === crossFullPath
-                && cell12child.src === crossFullPath))
-        ||
-        ((cell20child !== undefined
-            && cell21child !== undefined
-            && cell22child !== undefined)
-            &&
-            (cell20child.src === crossFullPath
-                && cell21child.src === crossFullPath
-                && cell22child.src === crossFullPath))
-        ||
-        ((cell00child !== undefined
-            && cell10child !== undefined
-            && cell20child !== undefined)
-            &&
-            (cell00child.src === crossFullPath
-                && cell10child.src === crossFullPath
-                && cell20child.src === crossFullPath))
-        ||
-        ((cell01child !== undefined
-            && cell11child !== undefined
-            && cell21child !== undefined)
-            &&
-            (cell01child.src === crossFullPath
-                && cell11child.src === crossFullPath
-                && cell21child.src === crossFullPath))
-        ||
-        ((cell02child !== undefined
-            && cell12child !== undefined
-            && cell22child !== undefined)
-            &&
-            (cell02child.src === crossFullPath
-                && cell12child.src === crossFullPath
-                && cell22child.src === crossFullPath))
-        ||
-        ((cell00child !== undefined
-            && cell11child !== undefined
-            && cell22child !== undefined)
-            &&
-            (cell00child.src === crossFullPath
-                && cell11child.src === crossFullPath
-                && cell22child.src === crossFullPath))
-        ||
-        ((cell02child !== undefined
-            && cell11child !== undefined
-            && cell20child !== undefined)
-            &&
-            (cell02child.src === crossFullPath
-                && cell11child.src === crossFullPath
-                && cell20child.src === crossFullPath))) {
-        console.log('boom')                                     // we shell generate 'win'
+        && cell02child !== undefined
+        && cell00child.src === crossFullPath                 // and if we have 3 cross in a row
+        && cell01child.src === crossFullPath
+        && cell02child.src === crossFullPath) {              // we shell generate 'win'
+        cell00child.parentNode.appendChild(redLineHorizontal0);
+        cell00child.style.position = 'absolute';
+        cell01child.parentNode.appendChild(redLineHorizontal1);
+        cell01child.style.position = 'absolute';
+        cell02child.parentNode.appendChild(redLineHorizontal2);
+        cell02child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell10child !== undefined
+        && cell11child !== undefined
+        && cell12child !== undefined
+        && cell10child.src === crossFullPath
+        && cell11child.src === crossFullPath
+        && cell12child.src === crossFullPath) {
+        cell10child.parentNode.appendChild(redLineHorizontal0);
+        cell10child.style.position = 'absolute';
+        cell11child.parentNode.appendChild(redLineHorizontal1);
+        cell11child.style.position = 'absolute';
+        cell12child.parentNode.appendChild(redLineHorizontal2);
+        cell12child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell20child !== undefined
+        && cell21child !== undefined
+        && cell22child !== undefined
+        && cell20child.src === crossFullPath
+        && cell21child.src === crossFullPath
+        && cell22child.src === crossFullPath) {
+        cell20child.parentNode.appendChild(redLineHorizontal0);
+        cell20child.style.position = 'absolute';
+        cell21child.parentNode.appendChild(redLineHorizontal1);
+        cell21child.style.position = 'absolute';
+        cell22child.parentNode.appendChild(redLineHorizontal2);
+        cell22child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell00child !== undefined
+        && cell10child !== undefined
+        && cell20child !== undefined
+        && cell00child.src === crossFullPath
+        && cell10child.src === crossFullPath
+        && cell20child.src === crossFullPath) {
+        cell00child.parentNode.appendChild(redLineVertical0);
+        cell00child.style.position = 'absolute';
+        cell10child.parentNode.appendChild(redLineVertical1);
+        cell10child.style.position = 'absolute';
+        cell20child.parentNode.appendChild(redLineVertical2);
+        cell20child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell01child !== undefined
+        && cell11child !== undefined
+        && cell21child !== undefined
+        && cell01child.src === crossFullPath
+        && cell11child.src === crossFullPath
+        && cell21child.src === crossFullPath) {
+        cell01child.parentNode.appendChild(redLineVertical0);
+        cell01child.style.position = 'absolute';
+        cell11child.parentNode.appendChild(redLineVertical1);
+        cell11child.style.position = 'absolute';
+        cell21child.parentNode.appendChild(redLineVertical2);
+        cell21child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell02child !== undefined
+        && cell12child !== undefined
+        && cell22child !== undefined
+        && cell02child.src === crossFullPath
+        && cell12child.src === crossFullPath
+        && cell22child.src === crossFullPath) {
+        cell02child.parentNode.appendChild(redLineVertical0);
+        cell02child.style.position = 'absolute';
+        cell12child.parentNode.appendChild(redLineVertical1);
+        cell12child.style.position = 'absolute';
+        cell22child.parentNode.appendChild(redLineVertical2);
+        cell22child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell00child !== undefined
+        && cell11child !== undefined
+        && cell22child !== undefined
+        && cell00child.src === crossFullPath
+        && cell11child.src === crossFullPath
+        && cell22child.src === crossFullPath) {
+        cell11child.parentNode.appendChild(redLineDiagonal0);
+        cell11child.style.position = 'absolute';
+        cell22child.parentNode.appendChild(redLineDiagonal1);
+        cell22child.style.position = 'absolute';
+        cell00child.parentNode.appendChild(redLineDiagonal2);
+        cell00child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else if (cell02child !== undefined
+        && cell11child !== undefined
+        && cell20child !== undefined
+        && cell02child.src === crossFullPath
+        && cell11child.src === crossFullPath
+        && cell20child.src === crossFullPath) {
+        cell02child.parentNode.appendChild(redLineDiagonal0);
+        cell02child.style.position = 'absolute';
+        cell11child.parentNode.appendChild(redLineDiagonal1);
+        cell11child.style.position = 'absolute';
+        cell20child.parentNode.appendChild(redLineDiagonal2);
+        cell20child.style.position = 'absolute';
+        isWin = true;
+        return isWin;
+    }
+    else {
+        isWin = false;
+        return isWin;
     }
 }
 
 function draw(cursor) {
+    let isWin = false;
     const cross = new Image(125, 125);
     cross.src = '/img/cross.png';
     const zero = new Image(125, 125);
@@ -99,11 +210,13 @@ function draw(cursor) {
     }
 
     cursorInputEl.appendChild(cross);
-    checkWin();
-    if (counter !== 4) {                             // avoid entering 10th element into the 9-cell field
-        randomAnswerEl.appendChild(zero);
-        checkWin();
-    }
+    isWin = checkWin(isWin);
+    if (isWin === false) {
+        if (counter !== 4) {                             // avoid entering 10th element into the 9-cell field
+            randomAnswerEl.appendChild(zero);
+            checkWin();
+        }
+    }    
     counter++;
 }
 
